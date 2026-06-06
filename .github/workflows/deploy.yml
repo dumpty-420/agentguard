@@ -47,13 +47,12 @@ jobs:
 
       - name: Run linting
         run: |
-          pip install ruff
-          ruff check . || true
+          uv run ruff check . || true
 
       - name: Run tests
         # All tests are fully mocked — no real API keys or DB needed in CI
         run: |
-          pytest tests/ -v
+          uv run pytest tests/ -v
 
   # ---------------------------------------------------------------------------
   # Job 2 — Build and Deploy (main branch only)
