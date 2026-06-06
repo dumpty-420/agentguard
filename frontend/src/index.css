@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0f1117;
+  --color-brand-surface: #1e212b;
+  --color-brand-border: #2d313f;
+  --color-brand-text: #e2e8f0;
+  --color-brand-muted: #94a3b8;
+  --color-brand-primary: #3b82f6;
+  --color-brand-primary-hover: #2563eb;
+  --color-brand-success: #10b981;
+  --color-brand-danger: #ef4444;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased m-0 p-0;
+  }
+}

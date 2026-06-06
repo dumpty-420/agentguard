@@ -7,7 +7,7 @@ vars only — never hardcoded.
 
 from __future__ import annotations
 
-from pydantic import Field
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings
 
 
@@ -156,6 +156,13 @@ class Settings(BaseSettings):
         default="",
         description="Postgres password.",
     )
+
+    @model_validator(mode="after")
+    def strip_whitespace_from_strings(self) -> Settings:
+        for field_name, value in self.__dict__.items():
+            if isinstance(value, str):
+                setattr(self, field_name, value.strip())
+        return self
 
     model_config = {
         "env_file": ".env",
